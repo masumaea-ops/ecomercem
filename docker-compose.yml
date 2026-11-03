@@ -1,0 +1,51 @@
+
+version: '3.8'
+
+services:
+  app:
+    build: ./server
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DB_HOST=mysql
+      - REDIS_HOST=redis
+      - DB_USER=masuma_user
+      - DB_PASSWORD=masuma_pass
+      - DB_NAME=masuma_db
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - masuma-net
+    restart: always
+
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: masuma_db
+      MYSQL_USER: masuma_user
+      MYSQL_PASSWORD: masuma_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - masuma-net
+    restart: always
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - masuma-net
+    restart: always
+
+networks:
+  masuma-net:
+    driver: bridge
+
+volumes:
+  mysql_data:

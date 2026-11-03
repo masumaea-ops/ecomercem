@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Base Styles */
+html {
+  font-size: 16px; /* Lock root font size to prevent environment scaling issues */
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body { 
+  font-family: 'Inter', sans-serif; 
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  @apply text-gray-900 bg-gray-50 text-base font-normal leading-relaxed overflow-x-hidden;
+}
+
+h1, h2, h3, h4, h5, h6 { 
+  font-family: 'Oswald', sans-serif; 
+  @apply tracking-tight font-medium uppercase;
+}
+
+/* Custom Utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-masuma-orange focus-visible:ring-offset-2;
+  }
+
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
+
+  .pb-mobile-nav {
+    padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+  }
+  .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  .media-protected {
+    @apply select-none pointer-events-none;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.4s ease-out;
+  }
+  
+  .animate-scale-up {
+    animation: scaleUp 0.3s ease-out;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .animate-slide-right {
+    animation: slideRight 0.6s ease-out;
+  }
+  
+  .animate-pulse-once {
+    animation: pulseOnce 0.5s ease-in-out;
+  }
+
+  .animate-slam-in {
+    animation: slamIn 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounceSubtle 2s infinite ease-in-out;
+  }
+}
+
+/* Manual Prose Styling */
+.prose h1 { @apply text-3xl font-bold mb-4 text-masuma-dark font-display uppercase; }
+.prose h2 { @apply text-2xl font-bold mb-3 mt-6 text-masuma-dark font-display uppercase; }
+.prose h3 { @apply text-xl font-bold mb-2 mt-4 text-masuma-dark font-display uppercase; }
+.prose p { @apply mb-4 leading-relaxed text-gray-600; }
+.prose ul { @apply list-disc pl-5 mb-4 text-gray-600; }
+.prose ol { @apply list-decimal pl-5 mb-4 text-gray-600; }
+.prose li { @apply mb-1; }
+.prose a { @apply text-masuma-orange hover:underline font-bold; }
+.prose blockquote { @apply border-l-4 border-masuma-orange pl-4 italic my-4 text-gray-500; }
+.prose strong { @apply font-bold text-gray-800; }
+
+/* Keyframes */
+@keyframes slideUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleUp {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideRight {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes pulseOnce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes slamIn {
+  0% { transform: scale(2) translateY(-100px) skewX(-10deg); opacity: 0; }
+  100% { transform: scale(1) translateY(0) skewX(0); opacity: 1; }
+}
+
+@keyframes bounceSubtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* --- ROBUST MULTI-PAGE PRINT STYLES --- */
+#print-root {
+  display: none;
+}
+
+@media print {
+  @page {
+    margin: 10mm;
+    size: A4 portrait;
+  }
+
+  body.printing-receipt {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    height: auto !important;
+    min-height: 100% !important;
+    width: 100% !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* When printing, hide regular application tree if print-root is active */
+  body.has-print-portal #root,
+  body:has(#print-root > *) #root {
+    display: none !important;
+  }
+
+  #print-root {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+    visibility: visible !important;
+  }
+
+  #print-root * {
+    visibility: visible !important;
+  }
+
+  /* Support in-DOM print containers without clipping */
+  .print-force-container {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+    visibility: visible !important;
+  }
+
+  .print-force-container * {
+    visibility: visible !important;
+  }
+
+  nav, header, footer, button, input, select, textarea, .no-print, .print\:hidden {
+    display: none !important;
+  }
+
+  /* Table multi-page integrity */
+  table {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+
+  thead {
+    display: table-header-group !important;
+  }
+
+  tfoot {
+    display: table-footer-group !important;
+  }
+
+  tr, .print-break-avoid, .no-break, .page-break-avoid {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Thermal 80mm Receipt Print Formatting */
+  .thermal-receipt {
+    width: 76mm !important;
+    max-width: 76mm !important;
+    margin: 0 auto !important;
+    padding: 2mm !important;
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+  }
+}

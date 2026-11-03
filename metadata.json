@@ -1,0 +1,6 @@
+{
+  "name": "Masuma Autoparts East Africa Limited",
+  "description": "Official regional distributor of genuine Masuma automotive parts in Kenya. High-quality Japanese engineered components for Toyota, Nissan, Subaru, and Mazda. 12-month warranty on all parts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

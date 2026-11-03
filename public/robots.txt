@@ -1,0 +1,73 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /checkout
+Disallow: /reset-password
+Disallow: /*?*q=
+Disallow: /*?*search=
+Disallow: /*?*sort=
+Disallow: /*?*order=
+Disallow: /*?*price_min=
+Disallow: /*?*price_max=
+Disallow: /*?*ref=
+Disallow: /*?*filter_*=
+
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /login
+Disallow: /checkout
+Disallow: /*?*q=
+Disallow: /*?*search=
+Disallow: /*?*sort=
+Disallow: /*?*order=
+Disallow: /*?*price_min=
+Disallow: /*?*price_max=
+Disallow: /*?*ref=
+Disallow: /*?*filter_*=
+
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /media/
+Allow: /assets/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /login
+Disallow: /checkout
+Disallow: /*?*sort=
+Disallow: /*?*price_min=
+Disallow: /*?*price_max=
+
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /checkout
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /checkout
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /checkout
+
+Sitemap: https://masuma.africa/sitemap.xml
+Sitemap: https://masuma.africa/sitemap-products.xml
+Sitemap: https://masuma.africa/sitemap-categories.xml
+Sitemap: https://masuma.africa/sitemap-compatibility.xml
+Sitemap: https://masuma.africa/sitemap-blog.xml
+Sitemap: https://masuma.africa/sitemap-marketplace.xml
+Sitemap: https://masuma.africa/sitemap-static.xml
+# LLMs.txt: https://masuma.africa/llms.txt

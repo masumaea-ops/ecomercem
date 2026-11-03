@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="masumaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF7A1A"/>
+      <stop offset="100%" stop-color="#E05500"/>
+    </linearGradient>
+    <filter id="subtleShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Premium Automotive Carbon Badge -->
+  <rect width="64" height="64" rx="14" fill="#0B0F19"/>
+  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="#222C3D" stroke-width="1.5"/>
+
+  <!-- Masuma "M" Icon in Signature Japanese Brand Orange -->
+  <path 
+    d="M 12 50 
+       L 12 14 
+       L 21.5 14 
+       L 32 37.5 
+       L 42.5 14 
+       L 52 14 
+       L 52 50 
+       L 43.5 50 
+       L 43.5 25.5 
+       L 34.5 45.5 
+       L 29.5 45.5 
+       L 20.5 25.5 
+       L 20.5 50 
+       Z" 
+    fill="url(#masumaGradient)"
+    filter="url(#subtleShadow)"
+  />
+</svg>
